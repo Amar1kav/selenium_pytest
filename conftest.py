@@ -7,7 +7,9 @@ from selenium.webdriver.chrome.options import Options
 serv = Service(ChromeDriverManager().install())
 opt = Options().add_experimental_option("detach", True)
 
-@pytest.mark.smoke
-def test_add(setup):
-    driver = setup
-    assert driver.title == "YouTube"
+@pytest.fixture()
+def setup():
+    driver = webdriver.Chrome(service=serv, options=opt)
+    driver.get("https://www.youtube.com/")
+    driver.implicitly_wait(10)
+    return driver
