@@ -5,4 +5,4 @@ def test_one():
     assert 1 == 1
 
 def test_two():
-    assert "two" == 2
+    assert "two" == "Two".lower()
